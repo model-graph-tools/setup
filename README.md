@@ -4,9 +4,11 @@ This repository contains documentation, configurartion and scripts how to get st
 
 <img src="https://model-graph-tools.github.io/img/tools.svg" alt="Model Graph Tools" width="512" />
 
-The [analyzer](https://github.com/model-graph-tools/analyzer) creates a Neo4j database containing the management model of a given WildFly version. For ech major WildFly version starting with version 10.0.0.Final there are predefined Neo4j database images available at https://hub.docker.com/r/modelgraphtools/neo4j. The setup described here use these images. If you need another WildFly version or want to analyze a version of JBoss EAP, use the [analyzer](https://github.com/model-graph-tools/analyzer) to create your own Neo4j database. 
+The [analyzer](https://github.com/model-graph-tools/analyzer) creates a Neo4j database containing the management model of a given WildFly version. For ech major WildFly version starting with version 10.0.0.Final there are predefined Neo4j database images available at https://hub.docker.com/r/modelgraphtools/neo4j. 
 
-The [model](https://github.com/model-graph-tools/model) services use these databases and expose a REST API. The [API](https://github.com/model-graph-tools/api) service keeps a registry of all running model services and provides a unified access to the [browser](https://github.com/model-graph-tools/browser) - a SPA with an UI to browse, query and compare the WildFly management model.
+The setup described here use these images. If you want to use another WildFly version or want to analyze a version of JBoss EAP, use the [analyzer](https://github.com/model-graph-tools/analyzer) command line tool to create your own Neo4j database. 
+
+The [model](https://github.com/model-graph-tools/model) services use these Neo4j databases and expose a REST API. The [API](https://github.com/model-graph-tools/api) service keeps a registry of all running model services and provides a unified access to the [browser](https://github.com/model-graph-tools/browser) - a SPA with an UI to browse, query and compare the WildFly management model.
 
 Getting all services up and running requires some plumbing. There are scipts in the different repositories to make this as easy as possible.   
 
@@ -28,7 +30,7 @@ The last command will open a browser at http://localhost:3000.
 
 ## Docker Compose
 
-To run in production mode, you can use a [jbang](https://www.jbang.dev/) script which creates a Docker compose file. The docker compose file starts all services, configures the necessary ports and links between the services. 
+To run in production mode, you can use a [jbang](https://www.jbang.dev/) script which creates a Docker compose file. The docker compose file configures and starts all services. 
 
 ```shell
 cd compose
