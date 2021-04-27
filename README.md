@@ -1,2 +1,40 @@
-# setup
-Scripts and configuration to start the model graph tools locally and in the cloud.
+# Model Graph Tools Setup
+
+This repository contains documentation, configurartion and scripts how to get started with the model graph tools. The model graph tools are a set of tools and services to analyze and work with the WildFly management model:
+
+<img src="https://model-graph-tools.github.io/img/tools.svg" alt="Model Graph Tools" style="width:50%;" />
+
+The [analyzer](https://github.com/model-graph-tools/analyzer) creates a Neo4j database containing the management model of a given WildFly version. For ech major WildFly version starting with version 10.0.0.Final there are predefined Neo4j database images available at https://hub.docker.com/r/modelgraphtools/neo4j. The setup described here use these images. If you need another WildFly version or want to analyze a version of JBoss EAP, use the [analyzer](https://github.com/model-graph-tools/analyzer) to create your own Neo4j database. 
+
+The [model](https://github.com/model-graph-tools/model) services use these databases and expose a REST API. The [API](https://github.com/model-graph-tools/api) service keeps a registry of all running model services and provides a unified access to the [browser](https://github.com/model-graph-tools/browser) - a SPA with an UI to browse, query and compare the WildFly management model.
+
+Getting all services up and running requires some plumbing. There are scipts in the different repositories to make this as easy as possible.   
+
+## Development
+
+To run the model graph tools with two model services in development mode use a combination of the following scripts:
+
+```shell
+api/start-redis.sh
+api/dev.sh
+model/start-modeldb.sh 23
+model/dev.sh 23
+model/start-modeldb.sh 22
+model/dev.sh 22
+browser/dev.sh
+```
+
+The last command will open a browser at http://localhost:3000. 
+
+## Docker Compose
+
+To run in production mode, you can use a [jbang](https://www.jbang.dev/) script which creates a Docker compose file. The docker compose file starts all services, configures the necessary ports and links between the services. 
+
+```shell
+cd compose
+jbang compose.java 23 22
+docker compose up --detach
+docker logs -fn 100 mgt_mgt-api_1
+```
+
+Wait until you see log messages about the registration of the model services. Then open http://localhost.
