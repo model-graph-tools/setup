@@ -2,7 +2,7 @@
 
 This repository contains documentation, configurartion and scripts how to get started with the model graph tools. The model graph tools are a set of tools and services to analyze and work with the WildFly management model:
 
-<img src="https://model-graph-tools.github.io/img/tools.svg" alt="Model Graph Tools" style="width:50%;" />
+<img src="https://model-graph-tools.github.io/img/tools.svg" alt="Model Graph Tools" width="512" />
 
 The [analyzer](https://github.com/model-graph-tools/analyzer) creates a Neo4j database containing the management model of a given WildFly version. For ech major WildFly version starting with version 10.0.0.Final there are predefined Neo4j database images available at https://hub.docker.com/r/modelgraphtools/neo4j. The setup described here use these images. If you need another WildFly version or want to analyze a version of JBoss EAP, use the [analyzer](https://github.com/model-graph-tools/analyzer) to create your own Neo4j database. 
 
