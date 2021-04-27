@@ -30,7 +30,7 @@ The last command will open a browser at http://localhost:3000.
 
 ## Docker Compose
 
-To run in production mode, you can use a [jbang](https://www.jbang.dev/) script which creates a Docker compose file. The docker compose file takes care about all necessary configuration and starts all services.. 
+To run in production mode, you can use a [jbang](https://www.jbang.dev/) script which creates a docker compose file. The script accepts a list of WildFly versions. The generated docker compose file takes care about all necessary configuration and starts all services.. 
 
 ```shell
 cd compose
