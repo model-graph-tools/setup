@@ -35,7 +35,7 @@ To run in production mode, you can use a [jbang](https://www.jbang.dev/) script 
 ```shell
 cd compose
 jbang compose.java 23 22
-docker compose up --detach
+docker compose up -d
 docker logs -fn 100 mgt_mgt-api_1
 ```
 
