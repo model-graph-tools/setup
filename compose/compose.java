@@ -58,13 +58,17 @@ class compose implements Callable<Integer> {
             writer.printf("  mgt-model-%d:%n", version);
             writer.printf("    image: \"modelgraphtools/model\"%n");
             writer.printf("    depends_on:%n");
-            writer.printf("      - \"mgt-api\"%n", version);
+            writer.printf("      - \"mgt-api\"%n");
             writer.printf("      - \"mgt-neo4j-%d\"%n", version);
+            writer.printf("    ports:%n");
+            writer.printf("      - \"74%d:7474\"%n", version);
+            writer.printf("      - \"76%d:7687\"%n", version);
             writer.printf("    environment:%n");
             writer.printf("      - quarkus.neo4j.uri=bolt://mgt-neo4j-%d:7687%n", version);
             writer.printf("      - mgt.api.service.uri=http://mgt-api:8080%n");
             writer.printf("      - mgt.model.service.uri=http://mgt-model-%d:8080%n", version);
             writer.printf("      - mgt.neo4j.browser.uri=http://localhost:74%d%n", version);
+            writer.printf("      - mgt.neo4j.bolt.uri=http://localhost:76%d%n", version);
         }
 
         // browser
