@@ -1,6 +1,6 @@
 # Model Graph Tools Setup
 
-This repository contains documentation, configurartion and scripts how to get started with the model graph tools. The model graph tools are a set of tools and services to analyze and work with the WildFly management model:
+This repository contains documentation, configuration and scripts on how to get started with the model graph tools. The model graph tools are a set of tools and services to analyze and work with the WildFly management model:
 
 <img src="https://model-graph-tools.github.io/img/tools.svg" alt="Model Graph Tools" width="512" />
 
