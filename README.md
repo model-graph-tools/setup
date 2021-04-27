@@ -17,6 +17,10 @@ Getting all services up and running requires some plumbing. There are scipts in 
 To run the model graph tools with two model services in development mode use a combination of the following scripts:
 
 ```shell
+git clone https://github.com/model-graph-tools/api.git
+git clone https://github.com/model-graph-tools/model.git
+git clone https://github.com/model-graph-tools/browser.git
+
 api/start-redis.sh
 api/dev.sh
 model/start-modeldb.sh 23
@@ -30,13 +34,15 @@ The last command will open a browser at http://localhost:3000.
 
 ## Docker Compose
 
-To run in production mode, you can use a [jbang](https://www.jbang.dev/) script which creates a docker compose file. The script accepts a list of WildFly versions. The generated docker compose file takes care about all necessary configuration and starts all services.. 
+To run in production mode, you can use a [jbang](https://www.jbang.dev/) script which creates a docker compose file. The script accepts a list of WildFly versions. The generated docker compose file takes care about all necessary configuration and starts all services. 
 
 ```shell
-cd compose
+git clone https://github.com/model-graph-tools/setup.git
+
+cd setup/compose
 jbang compose.java 23 22
 docker compose up -d
 docker logs -fn 100 mgt_mgt-api_1
 ```
 
-Wait until you see log messages about the registration of the model services. Then open http://localhost.
+Use `docker logs -fn 100 mgt_mgt-api_1` to follow the log file of the API service and wait until you see log messages about the registration of the model services. Then open http://localhost.
