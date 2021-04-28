@@ -3,6 +3,7 @@
 
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
+import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
 import java.io.FileWriter;
@@ -15,6 +16,9 @@ class compose implements Callable<Integer> {
 
     @Parameters(arity = "1..*", description = "at least one WildFly major version number")
     private int[] versions;
+
+    @Option(names = { "-p", "--port" }, description = "The browser port") 
+    int browserPort = 80;
 
     public static void main(String... args) {
         int exitCode = new CommandLine(new compose()).execute(args);
@@ -51,6 +55,9 @@ class compose implements Callable<Integer> {
             writer.printf("    ports:%n");
             writer.printf("      - \"74%d:7474\"%n", version);
             writer.printf("      - \"76%d:7687\"%n", version);
+            writer.printf("    environment:%n");
+            writer.printf("      - NEO4J_browser_post__connect__cmd=\"play http://localhost%s/model-graph-guide.html\"%n", (browserPort == 80 ? "" : ":" + browserPort));
+            writer.printf("      - NEO4J_browser_remote__content__hostname__whitelist=\"*\"%n");
         }
 
         // model service
@@ -77,7 +84,7 @@ class compose implements Callable<Integer> {
         writer.printf("    depends_on:%n");
         writer.printf("      - \"mgt-api\"%n");
         writer.printf("    ports:%n");
-        writer.printf("      - \"80:80\"%n");
+        writer.printf("      - \"%d:80\"%n", browserPort);
         writer.printf("    environment:%n");
         writer.printf("      - MGT_API=mgt-api:8080%n");
 
