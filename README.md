@@ -34,13 +34,13 @@ The last command will open a browser at http://localhost:3000.
 
 ## Docker Compose
 
-To run in production mode, you can use a [jbang](https://www.jbang.dev/) script which creates a docker compose file. The script accepts a list of WildFly versions. The generated docker compose file takes care about all necessary configuration and starts all services. 
+To run in production mode, you can use a [jbang](https://www.jbang.dev/) script which creates a docker compose file. The script accepts a port for the browser (defaults to 80), and a list of WildFly versions. The generated docker compose file takes care about all necessary configuration and starts all services. 
 
 ```shell
 git clone https://github.com/model-graph-tools/setup.git
 
 cd setup/compose
-jbang compose.java 23 22
+jbang compose.java 23 20 17
 docker compose up -d
 docker logs -fn 100 mgt_mgt-api_1
 ```

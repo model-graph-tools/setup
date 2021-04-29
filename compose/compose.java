@@ -17,7 +17,7 @@ class compose implements Callable<Integer> {
     @Parameters(arity = "1..*", description = "at least one WildFly major version number")
     private int[] versions;
 
-    @Option(names = { "-p", "--port" }, description = "The browser port") 
+    @Option(names = { "-p", "--port" }, description = "The browser port")
     int browserPort = 80;
 
     public static void main(String... args) {
@@ -67,9 +67,6 @@ class compose implements Callable<Integer> {
             writer.printf("    depends_on:%n");
             writer.printf("      - \"mgt-api\"%n");
             writer.printf("      - \"mgt-neo4j-%d\"%n", version);
-            writer.printf("    ports:%n");
-            writer.printf("      - \"74%d:7474\"%n", version);
-            writer.printf("      - \"76%d:7687\"%n", version);
             writer.printf("    environment:%n");
             writer.printf("      - quarkus.neo4j.uri=bolt://mgt-neo4j-%d:7687%n", version);
             writer.printf("      - mgt.api.service.uri=http://mgt-api:8080%n");
