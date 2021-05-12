@@ -56,8 +56,8 @@ class compose implements Callable<Integer> {
             writer.printf("      - \"74%d:7474\"%n", version);
             writer.printf("      - \"76%d:7687\"%n", version);
             writer.printf("    environment:%n");
-            writer.printf("      - NEO4J_browser_post__connect__cmd=\"play http://localhost%s/model-graph-guide.html\"%n", (browserPort == 80 ? "" : ":" + browserPort));
-            writer.printf("      - NEO4J_browser_remote__content__hostname__whitelist=\"*\"%n");
+            writer.printf("      - NEO4J_browser_post__connect__cmd=play http://localhost%s/model-graph-guide.html%n", (browserPort == 80 ? "" : ":" + browserPort));
+            writer.printf("      - NEO4J_browser_remote__content__hostname__whitelist=*%n");
         }
 
         // model service
