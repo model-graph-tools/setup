@@ -56,7 +56,7 @@ class compose implements Callable<Integer> {
             writer.printf("      - \"74%d:7474\"%n", version);
             writer.printf("      - \"76%d:7687\"%n", version);
             writer.printf("    environment:%n");
-            writer.printf("      - NEO4J_browser_post__connect__cmd=\"play http://localhost%s/model-graph-guide.html\"%n", (browserPort == 80 ? "" : ":" + browserPort));
+            writer.printf("      - NEO4J_browser_post__connect__cmd=\":play http://localhost%s/model-graph-guide.html\"%n", (browserPort == 80 ? "" : ":" + browserPort));
             writer.printf("      - NEO4J_browser_remote__content__hostname__whitelist=\"*\"%n");
         }
 
@@ -72,7 +72,7 @@ class compose implements Callable<Integer> {
             writer.printf("      - mgt.api.service.uri=http://mgt-api:8080%n");
             writer.printf("      - mgt.model.service.uri=http://mgt-model-%d:8080%n", version);
             writer.printf("      - mgt.neo4j.browser.uri=http://localhost:74%d%n", version);
-            writer.printf("      - mgt.neo4j.bolt.uri=http://localhost:76%d%n", version);
+            writer.printf("      - mgt.neo4j.bolt.uri=bolt://localhost:76%d%n", version);
         }
 
         // browser
