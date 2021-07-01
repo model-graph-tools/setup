@@ -40,7 +40,7 @@ To run in production mode, you can use a [jbang](https://www.jbang.dev/) script 
 git clone https://github.com/model-graph-tools/setup.git
 
 cd setup/compose
-jbang compose.java 23 20 17
+jbang compose.java 24 20 16
 docker compose up -d
 docker logs -fn 100 mgt_mgt-api_1
 ```
