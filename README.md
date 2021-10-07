@@ -23,10 +23,10 @@ git clone https://github.com/model-graph-tools/browser.git
 
 api/start-redis.sh
 api/dev.sh
-model/start-modeldb.sh 23
-model/dev.sh 23
-model/start-modeldb.sh 22
-model/dev.sh 22
+model/start-modeldb.sh 25
+model/dev.sh 25
+model/start-modeldb.sh 24
+model/dev.sh 24
 browser/dev.sh
 ```
 
@@ -40,7 +40,7 @@ To run in production mode, you can use a [jbang](https://www.jbang.dev/) script 
 git clone https://github.com/model-graph-tools/setup.git
 
 cd setup/compose
-jbang compose.java 24 20 16
+jbang compose.java 25 24 13
 docker compose up -d
 docker logs -fn 100 mgt_mgt-api_1
 ```
