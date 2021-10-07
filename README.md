@@ -45,4 +45,4 @@ docker compose up -d
 docker logs -fn 100 mgt_mgt-api_1
 ```
 
-Use `docker logs -fn 100 mgt_mgt-api_1` to follow the log file of the API service and wait until you see log messages about the registration of the model services. Then open http://localhost.
+Use `docker logs -fn 100 mgt-mgt-api-1` to follow the log file of the API service and wait until you see log messages about the registration of the model services. Then open http://localhost.
