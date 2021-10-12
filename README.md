@@ -42,7 +42,7 @@ git clone https://github.com/model-graph-tools/setup.git
 cd setup/compose
 jbang compose.java 25 24 23
 docker compose up -d
-docker logs -fn 100 mgt_mgt-api_1
+docker logs -fn 100 mgt-mgt-api-1
 ```
 
 Use `docker logs -fn 100 mgt-mgt-api-1` to follow the log file of the API service and wait until you see log messages about the registration of the model services. Then open http://localhost.
