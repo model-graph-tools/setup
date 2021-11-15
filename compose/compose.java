@@ -14,6 +14,10 @@ import java.util.concurrent.Callable;
         description = "Build a docker compose script with multiple WildFly versions")
 class compose implements Callable<Integer> {
 
+    private final static String API_VERSION = "0.0.1";
+    private final static String BROWSER_VERSION = "0.0.1";
+    private final static String MODEL_VERSION = "0.0.1";
+
     @Parameters(arity = "1..*", description = "at least one WildFly major version number")
     private int[] versions;
 
@@ -40,7 +44,7 @@ class compose implements Callable<Integer> {
 
         // api service
         writer.printf("  mgt-api:%n");
-        writer.printf("    image: \"modelgraphtools/api\"%n");
+        writer.printf("    image: \"modelgraphtools/api:%s\"%n", API_VERSION);
         writer.printf("    depends_on:%n");
         writer.printf("      - \"mgt-redis\"%n");
         writer.printf("    ports:%n");
@@ -63,7 +67,7 @@ class compose implements Callable<Integer> {
         // model service
         for (int version : versions) {
             writer.printf("  mgt-model-%d:%n", version);
-            writer.printf("    image: \"modelgraphtools/model\"%n");
+            writer.printf("    image: \"modelgraphtools/model:%s\"%n", MODEL_VERSION);
             writer.printf("    depends_on:%n");
             writer.printf("      - \"mgt-api\"%n");
             writer.printf("      - \"mgt-neo4j-%d\"%n", version);
@@ -77,7 +81,7 @@ class compose implements Callable<Integer> {
 
         // browser
         writer.printf("  mgt-browser:%n");
-        writer.printf("    image: \"modelgraphtools/browser\"%n");
+        writer.printf("    image: \"modelgraphtools/browser:%s\"%n", BROWSER_VERSION);
         writer.printf("    depends_on:%n");
         writer.printf("      - \"mgt-api\"%n");
         writer.printf("    ports:%n");

@@ -15,7 +15,10 @@ import java.util.concurrent.Callable;
         description = "Build a OpenShift setup script with multiple WildFly versions")
 class openshift implements Callable<Integer> {
 
-    private final String APPLICATION_LABEL = "modelgraphtools";
+    private final static String APPLICATION_LABEL = "modelgraphtools";
+    private final static String API_VERSION = "0.0.1";
+    private final static String BROWSER_VERSION = "0.0.1";
+    private final static String MODEL_VERSION = "0.0.1";
 
     @Parameters(arity = "1..*", description = "at least one WildFly major version number")
     private int[] versions;
@@ -40,7 +43,7 @@ class openshift implements Callable<Integer> {
         writer.printf("%n");
 
         // api service
-        writer.printf("oc new-app quay.io/modelgraphtools/api:0.0.1 \\%n");
+        writer.printf("oc new-app quay.io/modelgraphtools/api:%s \\%n", API_VERSION);
         writer.printf("  --name=mgt-api \\%n");
         writer.printf("  --labels application=%s \\%n", APPLICATION_LABEL);
         writer.printf("  --env quarkus.redis.hosts=redis://:redis@mgt-redis:6379%n");
@@ -48,7 +51,7 @@ class openshift implements Callable<Integer> {
         writer.printf("%n");
 
         // browser
-        writer.printf("oc new-app quay.io/modelgraphtools/browser:0.0.1 \\%n");
+        writer.printf("oc new-app quay.io/modelgraphtools/browser:%s \\%n", BROWSER_VERSION);
         writer.printf("  --name=mgt-browser \\%n");
         writer.printf("  --labels application=%s \\%n", APPLICATION_LABEL);
         writer.printf("  --env MGT_API=mgt-api:8080%n");
@@ -68,7 +71,7 @@ class openshift implements Callable<Integer> {
 
         // model service
         for (int version : versions) {
-            writer.printf("oc new-app quay.io/modelgraphtools/model:0.0.1 \\%n");
+            writer.printf("oc new-app quay.io/modelgraphtools/model:%s \\%n", MODEL_VERSION);
             writer.printf("  --name=mgt-model-%d \\%n", version);
             writer.printf("  --labels application=%s \\%n", APPLICATION_LABEL);
             writer.printf("  --env quarkus.neo4j.uri=bolt://mgt-neo4j-%d:7687 \\%n", version);
