@@ -51,7 +51,7 @@ To shut everything down, use `docker compose down`.
 
 ## OpenShift
 
-To run the model graph tools in OpenShift, log in to your cluster and create a project. Then use the [jbang](https://www.jbang.dev/) script `openshift/openshift.java`. The script expects a list of WildFly versions. The output is a bash script, which creates and starts all necessary OpenShift resources:
+To run the model graph tools on OpenShift, log in to your cluster and create a project. Then use the [jbang](https://www.jbang.dev/) script `openshift/openshift.java`. The script expects a list of WildFly versions. The output is a bash script, which creates and starts all necessary OpenShift resources:
 
 ```shell
 git clone https://github.com/model-graph-tools/setup.git
