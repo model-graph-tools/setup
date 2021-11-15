@@ -81,7 +81,7 @@ class compose implements Callable<Integer> {
         writer.printf("    depends_on:%n");
         writer.printf("      - \"mgt-api\"%n");
         writer.printf("    ports:%n");
-        writer.printf("      - \"%d:80\"%n", browserPort);
+        writer.printf("      - \"%d:8080\"%n", browserPort);
         writer.printf("    environment:%n");
         writer.printf("      - MGT_API=mgt-api:8080%n");
 
