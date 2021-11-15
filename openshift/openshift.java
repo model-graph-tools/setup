@@ -11,7 +11,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.concurrent.Callable;
 
-@Command(name = "openshift", mixinStandardHelpOptions = true, version = "compose 0.1",
+@Command(name = "openshift", mixinStandardHelpOptions = true, version = "openshift 0.1",
         description = "Build a OpenShift setup script with multiple WildFly versions")
 class openshift implements Callable<Integer> {
 
