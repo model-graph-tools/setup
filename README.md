@@ -4,7 +4,7 @@ This repository contains documentation, configuration and scripts on how to get 
 
 <img src="https://model-graph-tools.github.io/img/tools.svg" alt="Model Graph Tools" width="512" />
 
-The [analyzer](https://github.com/model-graph-tools/analyzer) creates a Neo4j database containing the management model of a given WildFly version. For ech major WildFly version starting with version 10.0.0.Final there are predefined Neo4j database images available at https://hub.docker.com/r/modelgraphtools/neo4j. 
+The [analyzer](https://github.com/model-graph-tools/analyzer) creates a Neo4j database containing the management model of a given WildFly version. For ech major WildFly version starting with version 10.0.0.Final there are predefined Neo4j database images available at https://quay.io/repository/modelgraphtools/neo4j. 
 
 The setup described here use these images. If you want to use another WildFly version or want to analyze a version of JBoss EAP, use the [analyzer](https://github.com/model-graph-tools/analyzer) command line tool to create your own Neo4j database. 
 
